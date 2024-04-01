@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/student")
 public class studentController {
 
-    @RequestMapping("/register") //localhost:8080/student/register
+    //@RequestMapping("/register") //localhost:8080/student/register
+    @GetMapping("/register")
     public String register(Model model){
 
         model.addAttribute("students", DataGenerator.createStudent());
@@ -21,8 +22,9 @@ public class studentController {
     }
 
     @RequestMapping("/welcome") //localhost:8080/student/welcome?name=Ozzy
-    public String welcome(@RequestParam String name,Model model){
-        model.addAttribute("name",name);
+   @PostMapping("/welcome")
+    public String welcome(@RequestParam String name){
+       // model.addAttribute("name",name);
         return "student/welcome";
     }
 
