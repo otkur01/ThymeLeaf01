@@ -22,7 +22,7 @@ public class studentController {
     }
 
     @RequestMapping("/welcome") //localhost:8080/student/welcome?name=Ozzy
-   @PostMapping("/welcome")
+  // @PostMapping("/welcome")
     public String welcome(@RequestParam String name){
        // model.addAttribute("name",name);
         return "student/welcome";

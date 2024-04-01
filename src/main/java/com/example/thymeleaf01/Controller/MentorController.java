@@ -1,6 +1,7 @@
 package com.example.thymeleaf01.Controller;
 
 
+import com.example.thymeleaf01.model.Mentor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,16 +16,25 @@ import java.util.List;
 @RequestMapping("/mentor")
 public class MentorController {
 
-    @RequestMapping("/register") //localhost:8080/mentor/register
-    public String register(){
+    @GetMapping("/register") //localhost:8080/mentor/register
+    public String register(Model model){
+        List<String>batchList = Arrays.asList("JD1","JD2","JD3");
 
-        return "student/register";
+        model.addAttribute("batchList",batchList);
+
+        model.addAttribute("mentor",new Mentor());
+
+        return "mentor/mentor-register";
     }
+    @PostMapping("/confirm")
+ public String sumbitForm(@ModelAttribute ("mentor") Mentor mentor,Model model){
 
-    @RequestMapping("/drop") //localhost:8080/mentor/drop
-    public String drop(){
+//   //   return "mentor/mentor-confirm";
+//   model.addAttribute("mentor",new Mentor());
+//   return "mentor/mentor-register";
 
-        return "student/register";
+
+        return "redirect:/mentor/register";
     }
 
 }
